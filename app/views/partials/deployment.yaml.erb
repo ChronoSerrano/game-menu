@@ -1,0 +1,32 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: &PROJECT "game-menu"
+  labels: &LABELS
+    app: *PROJECT
+    release: &ENV "development"
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        <<: *LABELS
+    spec:
+      containers:
+      - name: passenger
+        image: instructure/ruby-passenger
+        imagePullPolicy: IfNotPresent
+        readinessProbe:
+          tcpSocket:
+            port: 80
+      - name: postgres
+        image: postgres:10.1
+        imagePullPolicy: IfNotPresent
+        readinessProbe:
+          tcpSocket:
+            port: 5432
+      - name: app
+        image: atayarani/game-menu:0.0.3
+        imagePullPolicy: IfNotPresent
+        args:
+          - project_exec

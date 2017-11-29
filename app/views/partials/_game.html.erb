@@ -1,0 +1,17 @@
+<%= render 'form' %>
+<% @games.each do |game| %>
+  <div>
+    <center>
+      <h1><%= game[:name] %></h1>
+      <%= render partial: 'partials/object_type', locals: { game: game} %>
+      <caption><%= game[:description].html_safe %></caption>
+      <br /><br />
+      <i>Minimum Players:</i> <%= game[:min_players] %> &bull;
+      <i>Maximum Players:</i> <%= game[:max_players] %> &bull;
+      <i>Minimum Age:</i> <%= game[:min_age] %> &bull;
+      <i>Minimum Play Time:</i> <%= game[:min_playtime] %>m &bull;
+      <i>Maximum Play Time:</i> <%= game[:max_playtime] %>m
+    </center>
+  </div>
+  <hr />
+<% end %>

@@ -1,0 +1,10 @@
+<h3><%=
+case game[:object_type]
+when 'boardgameexpansion'
+  'Expansion'
+when 'boardgame'
+  'Board Game'
+else
+  game[:object_type]
+end
+%></h3>

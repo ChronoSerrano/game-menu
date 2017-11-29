@@ -1,0 +1,18 @@
+<%= form_tag controller: 'games', action: 'create' do %>
+  <%= label_tag(:min_age, 'Minimum Age:') %>
+  <%= text_field_tag(:min_age, '', size: 3, value: 0) %>
+
+  <%= label_tag(:min_players, 'Minimum Players:') %>
+  <%= text_field_tag(:min_players, '', size: 3, value: 0) %>
+
+  <%= label_tag(:max_players, 'Maximum Players:') %>
+  <%= text_field_tag(:max_players, '', size: 3, value: 999) %>
+
+  <%= label_tag(:min_playtime, 'Minimum Playtime:') %>
+  <%= text_field_tag(:min_playtime, '', size: 3, value: 0) %>
+
+  <%= label_tag(:max_playtime, 'Maximum Playtime:') %>
+  <%= text_field_tag(:max_playtime, '', size: 3, value: 999) %>
+  
+  <%= submit_tag 'Search' %>
+<% end %>
